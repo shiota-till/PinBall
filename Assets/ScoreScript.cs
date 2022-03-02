@@ -8,12 +8,15 @@ public class ScoreScript : MonoBehaviour
     //スコアの初期値
     private int score = 0;
 
+    public void addpoint(int point)
+    {
+        this.score += point;
+    }
+
     //スコアを表示するテキスト
     private GameObject scoreText;
 
-    //ターゲットのスコア
-    private int[] points = { 5, 10, 20 };
-
+      
     // Start is called before the first frame update
     void Start()
     {
@@ -24,24 +27,26 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.scoreText.GetComponent<Text>().text = "" + score;
+        Debug.Log(this.score);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
         if (tag == "SmallStarTag")
         {
-            //this.score += this.points[0];
-            Debug.Log(this.score);
+            addpoint(10);
         }
-        else if (tag == "LargeStarTag" || tag == "SmallCloudTag")
+        else if (tag == "LargeStarTag")
         {
-            //this.score += this.points[1];
-            Debug.Log(this.score);
+            addpoint(20);
         }
-        else if (tag == "LargeCloudTag")
+        else if (tag == "SmallCloudTag") 
         {
-            //this.score += this.points[2];
-            Debug.Log(this.score);
+            addpoint(20);
         }
-    }
-    void OnCollisionEnter(Collision other)
-    {
-        
+        else if (tag == "LargeCloudTag") 
+        {
+            addpoint(30);
+        }
     }
 }
