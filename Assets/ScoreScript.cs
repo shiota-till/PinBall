@@ -9,7 +9,7 @@ public class ScoreScript : MonoBehaviour
     private int score = 0;
 
     //スコアの合計値の関数
-    public void addpoint(int point)
+    public void Totalpoint(int point)
     {
         this.score += point;
     }
@@ -32,19 +32,19 @@ public class ScoreScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "SmallStarTag")
         {
-            addpoint(10);
+            Totalpoint(10);
         }
         if (collision.gameObject.tag == "SmallCloudTag" )
         {
-            addpoint(15);
+            Totalpoint(15);
         }
         if (collision.gameObject.tag == "LargeStarTag")
         {
-            addpoint(20);
+            Totalpoint(20);
         }
         if (collision.gameObject.tag == "LargeCloudTag")
         {
-            addpoint(100);
+            Totalpoint(100);
         }
     }
 }
